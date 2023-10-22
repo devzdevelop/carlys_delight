@@ -1,0 +1,98 @@
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+
+.logo-container {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    margin-top: -34px;
+    margin-bottom: -62px;
+}
+
+
+.logo-container img {
+    width: 200px;
+    height: 100px;
+    background: white;
+    margin-bottom: 0px;
+}
+
+
+/* Style for the navigation bar with a bottom border but no top border */
+nav {
+    background-color: #fff;
+    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.2); /* Only add a shadow at the bottom */
+    justify-content: space-between;
+    align-items: center;
+    /* font-weight: bold; */
+    font-size:18px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+li a {
+    text-decoration: none;
+    color: #333;
+    padding: 20px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.logout-link {
+    margin-left: auto;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    /* Adjust logo size for smaller screens */
+    .logo-container img {
+        width: 150px;
+        height: 75px;
+    }
+
+    /* Center-align the logo and navigation links for smaller screens */
+    .logo-container {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    ul {
+        flex-direction: column; /* Stack navigation links vertically */
+        align-items: center; /* Center-align navigation links */
+    }
+
+    .logout-link {
+        margin-left: 0; /* Remove margin for Logout link */
+        margin-top: 10px; /* Add some spacing for the Logout link */
+    }
+}
+
+
+

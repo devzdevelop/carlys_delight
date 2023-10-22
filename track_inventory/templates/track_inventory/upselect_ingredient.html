@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "track_inventory/base.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'track_inventory/menu_item_style.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}
+    <h2>Update Ingredient</h2>
+    <h3>Select the menu item you want to update:</h3>
+    {% for item in menuitem_list %}
+                <option value="{{ item.id }}">{{ item.item_name }}</option>
+    {% endfor %}
+
+    <select name="menu_item">
+        {% for ingredient in ingredients_list %}
+            <option value="{{ ingredient.id }}">{{ ingredient.in_name }}</option>
+        {% endfor %}
+    </select>
+    <input href="#" id="update-link">Submit />
+
+    <script>
+        document.getElementById('update-link').addEventListener('click', function () {
+
+            var selectedItemId = document.getElementById('menu-item-select').value;
+
+
+            var updateUrl = "{% url 'updateingredient' 0 %}".replace('0', selectedItemId);
+
+
+            window.location.href = updateUrl;
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

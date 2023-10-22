@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "track_inventory/base.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'track_inventory/menu_item_style.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}
+    <h2>Update Recipe Requirement</h2>
+    <h3>Select the menu item you want to update:</h3>
+    <select id="menu-item-select">
+        {% for recipe in object_list %}
+            <option value="{{ recipe.id }}">{{ recipe.item_name.item_name }}</option>
+        {% endfor %}
+    </select>
+    <!--
+    {% for recipe in object_list %}
+            <p>{{ recipe.id }} {{ recipe.item_name.item_name }}</p>
+    {% endfor %}
+    -->
+    <a href="#" id="update-link">Submit</a>
+
+    <script>
+        document.getElementById('update-link').addEventListener('click', function () {
+            var selectedItemId = document.getElementById('menu-item-select').value;
+
+            if (selectedItemId) {
+                var updateUrl = "{% url 'updatereciperequirement' 0 %}".replace('0', selectedItemId);
+                window.location.href = updateUrl;
+            } else {
+                // Handle the case where no menu item is selected
+                alert('Please select a menu item before submitting.');
+            }
+        });
+    </script> 
+    {% endblock %}
+</body>
+</html>

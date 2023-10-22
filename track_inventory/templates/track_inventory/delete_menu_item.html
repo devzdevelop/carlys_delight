@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "track_inventory/base.html" %}
+{% load static %}
+<html>
+    <head>
+        {% block head %}
+        <link rel="stylesheet" href="{% static 'track_inventory/menu_item_style.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <h2>Delete Menu Item</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Delete">
+        </form>
+        {% endblock %}
+    </body>
+
+</html>

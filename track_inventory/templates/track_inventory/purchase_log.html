@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "track_inventory/base.html" %}
+{% load static %}
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+    <title>Title</title>
+        {% block head %}
+        <link rel="stylesheet" href="{% static 'track_inventory/menu_item_style.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <h2>Purchase Log</h2>
+
+        <div class="link-container">
+        <a href="{% url 'purchaselog'  %}" >View Purchase Log</a>
+        <a href="{% url 'addpurchaselog' %}">Add Purchase</a>
+        <a href="{% url 'purchaselogdelselect' %}">Delete Purchase</a>
+        </div>
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Item Cost</th>
+                <th>Timestamp</th>
+            </tr>
+            {% for purchase in object_list %}
+            <tr>
+                <td>{{ purchase.item_name.item_name }}</td>
+                <td>${{ purchase.item_name.item_price }}</td>
+                <td>{{ purchase.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endblock %}
+    </body>
+
+</html>

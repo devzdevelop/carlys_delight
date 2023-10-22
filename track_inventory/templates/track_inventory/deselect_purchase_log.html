@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends "track_inventory/base.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'track_inventory/menu_item_style.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}
+    <h2>Delete Purchase</h2>
+    <h3>Select the purchase you want to delete:</h3>
+    <form method="post" action="{% url 'deletepurchaselog' %}">
+        {% csrf_token %}
+        <select name="purchase_log">
+            {% for log in object_list %}
+                <option value="{{ log.id }}">{{ log.item_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    {% endblock %}
+</body>
+</html>
+

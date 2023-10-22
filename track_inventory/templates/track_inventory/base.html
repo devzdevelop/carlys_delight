@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+         <link rel="stylesheet" href="{% static 'track_inventory/style.css' %}">
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="logo-container">
+        <img src="{% static 'track_inventory/logo.png' %}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'menuitem' %}">Menu Item</a></li>
+                <li><a href="{% url 'ingredients' %}">Ingredients</a></li>
+                <li><a href="{% url 'reciperequirements' %}">Recipe Requirements</a></li>
+                <li><a href="{% url 'purchaselog' %}">Purchase Log</a></li>
+                <li class="logout-link"><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+         <h1>Inventory Tracker</h1>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

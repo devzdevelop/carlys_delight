@@ -1,0 +1,83 @@
+{% extends "track_inventory/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'track_inventory/menu_item_style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h4 class="open_msg">This dashboard keeps track of the inventory during the day. You can see an overview of the inventory along with the total purchase.</h4>
+    <h2>Dashboard - Analytics</h2>
+
+    <section class="ingredients">
+        <h3>Ingredients</h3>
+        <table>
+            <tr>
+                <th>Ingredient Name</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Price</th>
+            </tr>
+            {% for ingredient in ingredients_list %}
+                <tr>
+                    <td>{{ ingredient.in_name }}</td>
+                    <td>{{ ingredient.quantity }}</td>
+                    <td>{{ ingredient.unit }}</td>
+                    <td>{{ ingredient.in_price }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section class="menu-items">
+        <h3>Menu Items</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Cost</th>
+            </tr>
+            {% for item in items4 %}
+                <tr>
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ item.item_price }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section class="recipe-requirements">
+        <h3>Recipe Requirements</h3>
+        <table>
+            <tr>
+                <th>Item Name</th>
+                <th>Ingredient Name</th>
+                <th>Quantity</th>
+            </tr>
+            {% for recipe in items3 %}
+                <tr>
+                    <td>{{ recipe.item_name.item_name }}</td>
+                    <td>{{ recipe.in_name.in_name }}</td>
+                    <td>{{ recipe.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section class="purchase-log">
+        <h3>Purchase Log</h3>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Item Cost</th>
+                <th>Timestamp</th>
+            </tr>
+            {% for purchase in items2 %}
+                <tr>
+                    <td>{{ purchase.item_name.item_name }}</td>
+                    <td>{{ purchase.item_name.item_price }}</td>
+                    <td>{{ purchase.timestamp }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}

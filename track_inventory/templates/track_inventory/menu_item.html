@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "track_inventory/base.html" %}
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <title>Title</title>
+        {% block head %}
+        <link rel="stylesheet" href="{% static 'track_inventory/menu_item_style.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <h2>Menu Items</h2>
+        <div class="link-container">
+        <a href="{% url 'menuitem'  %}" >View Menu Items</a>
+        <a href="{% url 'addmenuitem' %}">Add Menu Item</a>
+        <a href="{% url 'menuitemupselect' %}">Update Menu Item</a>
+        <a href="{% url 'menuitemdelselect' %}">Delete Menu Item</a>
+        </div>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Cost</th>
+            </tr>
+
+                {% for item in menuitem_list %}
+                    <tr>
+                        <td>{{ item.item_name }}</td>
+                        <td>{{ item.item_price }}</td>
+                    </tr>
+                {% endfor %}
+
+        </table>
+        {% endblock %}
+    </body>
+
+</html>

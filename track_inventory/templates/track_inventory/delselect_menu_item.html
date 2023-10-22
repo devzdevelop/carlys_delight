@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "track_inventory/base.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'track_inventory/menu_item_style.css' %}">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}
+    <h2>Delete Menu Item</h2>
+    <h3>Select the menu item you want to delete:</h3>
+    <form method="post" action="{% url 'deletemenuitem' %}">
+        {% csrf_token %}
+        <select name="menu_item">
+            {% for item in menuitem_list %}
+                <option value="{{ item.id }}">{{ item.item_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    {% endblock %}
+</body>
+</html>
